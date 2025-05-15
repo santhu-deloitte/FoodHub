@@ -12,7 +12,7 @@ input_file = "foodhub_order.csv"  # Replace with your CSV file path
 df = spark.read.csv(input_file, header=True, inferSchema=True)
 #print(df.show(5))
 
-'''
+
 # Perform transformations
 # Example 1: Select specific columns
 selected_df = df.select("restaurant_name", "cost_of_the_order")
@@ -28,10 +28,12 @@ transformed_df = filtered_df.withColumn("new_column", col("column2") * 2)
 # Show the transformed data
 transformed_df.show()
 
+
 # Write the transformed data to a new CSV file
 output_file = "path/to/your/output.csv"  # Replace with your desired output file path
 transformed_df.write.csv(output_file, header=True)
 
+'''
 # Group by restaurant name and count the number of orders
 top_restaurants = df.groupBy("restaurant_name").agg(count("restaurant_name").alias("order_count"))
 
